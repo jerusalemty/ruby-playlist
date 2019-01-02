@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Registration & Login</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href= "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <script src= "https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src= "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src= "https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#table1').DataTable();
+            } );
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h4><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h4>
+            <table id="table1" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Artist</th>
+                        <th>Title</th>
+                        <th>Times Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @playlist %>
+                        <% @playlist.each do|list| %>
+                            <tr>
+                                <td><%= list.song.artist %> </td>
+                                <td><%= list.song.title %> </td>
+                                <td><%= list.song.total %></td>                  
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
